@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cheking availibility</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sideBar">
+        <h1 id="agencyName" class="agencyName"></h1>
+        <p id="location"> Hello </p>
+    </div>
+    <div class="wrapper">
+        <div class="dateSelection">
+            <input type="date" name="checkInDate" id="checkInDate"><br><br>
+            <input type="date" name="checkOutDate" id="checkOutDate"><br><br>
+            <button>Get Agency Info</button> 
+        </div>
+        <div id="availableCars">
+
+        </div>
+    </div>
+
+    <script src="./fakeData.js"></script>
+    <script>
+        console.log(carsData.cars);
+        const agencyName = document.getElementById('agencyName');
+        agencyName.innerText = carsData.rental_agency;
+        
+        // Get the location element and add a click event listener to it 
+        let locationElement = document.getElementById("location");
+        locationElement.innerText = carsData.location;
+
+        let checkInDate = document.getElementById('checkInDate').valueAsDate;
+        console.log(checkInDate);
+
+        let reservationsTest = carsData.cars[0].reservations[0].start_date;
+        let reservationsDates = new Date(reservationsTest);
+        console.log(reservationsDates);
+
+        console.log(reservationsDates - checkInDate)
+    </script>
+
+    <script>
+        function getAvailableCars(carsData, startDate, endDate) {
+        const availableCars = [];
+
+        for (const car of carsData.cars) {
+            let isAvailable = true;
+
+            for (const reservation of car.reservations || []) {
+                const reservationStartDate = new Date(reservation.start_date);
+                const reservationEndDate = new Date(reservation.end_date);
+                const inputStartDate = new Date(startDate);
+                const inputEndDate = new Date(endDate);
+
+                if (
+                    (inputStartDate >= reservationStartDate && inputStartDate <= reservationEndDate) ||
+                    (inputEndDate >= reservationStartDate && inputEndDate <= reservationEndDate) ||
+                    (inputStartDate <= reservationStartDate && inputEndDate >= reservationEndDate)
+                ) {
+                    isAvailable = false;
+                    break;
+                }
+            }
+
+            if (isAvailable) {
+                availableCars.push(car);
+            }
+        }
+        displayAvailableCars(availableCars);
+        return availableCars;
+    }
+
+    function displayAvailableCars(availableCars){
+        const contentWrapper = document.getElementById('availableCars');
+        
+        for  (let i= 0; i < availableCars.length; i++){
+            let title = document.createElement( 'div' );
+            title.classList.add('carCard');
+            title.innerhtml = 
+            `
+                <h2 class='carName'>${availableCars[i].make + ' ' + availableCars[i].model}</h2>
+            `;
+
+            contentWrapper.appendChild(title);
+        }
+
+    }
+
+    const startDate = "2024-02-21";
+    const endDate = "2024-02-25";
+
+    const availableCars = getAvailableCars(carsData, startDate, endDate);
+    console.log("Available cars:", availableCars);
+    </script>
+</body>
+</html>

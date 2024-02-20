@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date between two dates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="datesCard">
+            <div class="start_date wrapper"> 
+                <label for="start_date" class="start_date_label">Start Date: </label><br/>
+                <input type="date" name="start_date" id="start_date" class="start_date input" required />
+            </div>
+            <div class="end_date wrapper"> 
+                <label for="end_date" class="end_date_label">End Date: </label><br/><br/>
+                <input type="date" name="end_date" id="end_date" class="end_date input" required />
+            </div>
+        <button id="submit" onclick="checkDays()">Get Dates Between Two Dates</button>
+        <h1 id="dynamicDates">Dynamic Dates will appear here.</h1>
+    </div>
+    
+    <script src="./main.js"></script>
+</body>
+</html>

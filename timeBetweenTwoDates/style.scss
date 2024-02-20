@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100svh;
+    height: 100vh;
+    width: 100svw;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #224;
+    background:
+      url(https://source.unsplash.com/E8Ufcyxz514/2400x1823)
+      center / cover no-repeat fixed;
+}
+
+.datesCard{
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    height: max-content;
+    width: 60%;
+    padding: 35px;
+  
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+  
+    backdrop-filter: blur(15px);
+    .wrapper{
+        display: inherit;
+        flex-direction: column;
+        width: 45%;
+        padding: 3%;
+        background-color: #ececec50;
+        .input{
+            margin: 1.5vh 0% 0%;
+            border: none;
+            height: 3rem;
+            padding: 2% 3%;
+        }
+    }
+    button{
+        margin-top: 2%;
+        width: 30%;
+        padding: 2% 3%;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.77);
+        backdrop-filter: blur(5px);
+        color: #f5ebeb;
+        font-size: 1.1em;
+        border-radius: 15px;
+        cursor: pointer;
+        &:hover {
+            filter: brightness(.9)
+        };
+        font-weight: bold;
+    }
+    #dynamicDates{
+        margin-top: 3%;
+        width: 80%;
+        word-break: break-all;
+        text-align: center;
+    }
+}

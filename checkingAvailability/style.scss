@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.sideBar{
+    height: 100vh;
+    width: 20%;
+    background-color: black;
+    box-shadow: 4px  8px 16px rgba(0,0,0,.3);
+    color: #fff;
+    .agencyName{
+        font-size:  2rem;
+    }
+}
+
+.wrapper{
+    width: 80%;
+    .dateSelection{
+        width: 80%;
+        margin: 5% auto 0;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        input{
+            width: 45%;
+        }
+        button{
+            margin-top: 3vh;
+            width: 30%;
+        }
+    }
+}
+
+#availableCars{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .carCard{
+        width: 25%;
+        min-height: 15vh;
+        height: max-content;
+        box-shadow: 0px 4px 8px 6px #eaecef;
+    }
+}
